@@ -67,36 +67,36 @@ function Home() {
   ];
 
   return (
-    <main className="main-container">
-      <div className="main-title">
+    <main className="mainContainer">
+      <div className="mainTitle">
         <h3>DASHBOARD</h3>
       </div>
-      <div className="main-cards">
+      <div className="mainCards">
         <div className="card">
-          <div className="card-inner">
+          <div className="cardInner">
             <h3>USERS</h3>
-            <BsPeopleFill className="card_icon" />
+            <BsPeopleFill className="cardIcon" />
           </div>
           <h1>100</h1>
         </div>
         <div className="card">
-          <div className="card-inner">
+          <div className="cardInner">
             <h3>CATEGORIES</h3>
-            <BiSolidCategory className="card_icon" />
+            <BiSolidCategory className="cardIcon" />
           </div>
           <h1>9</h1>
         </div>
         <div className="card">
-          <div className="card-inner">
+          <div className="cardInner">
             <h3>PRODUCTS</h3>
-            <BsFillArchiveFill className="card_icon" />
+            <BsFillArchiveFill className="cardIcon" />
           </div>
           <h1>157</h1>
         </div>
         <div className="card">
-          <div className="card-inner">
+          <div className="cardInner">
             <h3>ALERTS</h3>
-            <BsFillBellFill className="card_icon" />
+            <BsFillBellFill className="cardIcon" />
           </div>
           <h1>24</h1>
         </div>

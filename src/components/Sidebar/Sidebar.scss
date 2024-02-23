@@ -6,7 +6,7 @@
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
 
-  .sidebar-title {
+  .sidebarTitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,7 +14,7 @@
     margin-top: 10px;
     margin-bottom: 40px;
 
-    .sidebar-admin {
+    .sidebarAdmin {
       font-size: 20px;
       font-weight: 700;
     }
@@ -26,28 +26,28 @@
     }
   }
 
-  .sidebar-list {
+  .sidebarList {
     padding: 0;
     list-style-type: none;
 
-    .sidebar-list-item {
+    .sidebarListItem {
       padding: 20px 20px;
       font-size: 18px;
     }
 
-    .sidebar-list-item:hover {
+    .sidebarListItem:hover {
       background-color: rgba(255, 255, 255, 0.2);
       cursor: pointer;
     }
 
-    .sidebar-list-item > a {
+    .sidebarListItem > a {
       text-decoration: none;
       color: white;
     }
   }
 }
 
-.sidebar-responsive {
+.sidebarResponsive {
   display: inline !important;
   position: absolute;
   z-index: 12 !important;

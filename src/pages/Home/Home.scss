@@ -1,16 +1,16 @@
-.main-container {
+.mainContainer {
   grid-area: main;
   overflow-y: auto;
   padding: 20px 20px;
   color: rgba(255, 255, 255, 0.95);
 }
 
-.main-title {
+.mainTitle {
   display: flex;
   justify-content: space-between;
 }
 
-.main-cards {
+.mainCards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
@@ -41,13 +41,13 @@
   background-color: red;
 }
 
-.card-inner {
+.cardInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.card-inner > .card_icon {
+.cardInner > .cardIcon {
   font-size: 23px;
 }
 

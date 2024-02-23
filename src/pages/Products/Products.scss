@@ -1,9 +1,22 @@
-.user {
+.products {
   padding: 20px 20px;
   font-size: 22px;
 
-  .userList {
+  .moveProductBtn {
+    display: flex;
     margin-top: 30px;
+    margin-left: auto;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    outline: 0;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .productsList {
+    margin-top: 10px;
 
     table {
       padding: 15px 15px;
@@ -24,8 +37,8 @@
 
     th,
     td {
-      padding: 1em 0.5em;
       vertical-align: middle;
+      padding: 1em 0.5em;
       border-bottom: 1px solid gray;
     }
   }

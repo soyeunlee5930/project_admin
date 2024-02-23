@@ -5,7 +5,13 @@ const User = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    fetch('/data/user.json')
+    // fetch('/data/user.json')
+    fetch('http://localhost:8080/rest/all', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
       .then(res => res.json())
       .then(data => {
         setUserData(data);
@@ -15,7 +21,7 @@ const User = () => {
   return (
     <div className="user">
       <h1>회원 관리</h1>
-      <div className="user-list">
+      <div className="userList">
         <table>
           <thead>
             <tr>
@@ -31,7 +37,7 @@ const User = () => {
           </thead>
           <tbody>
             {userData.map((user, index) => (
-              <tr key={index} className="user-info">
+              <tr key={index} className="userInfo">
                 <td>{index + 1}</td>
                 <td>{user.user_id}</td>
                 <td>{user.name}</td>

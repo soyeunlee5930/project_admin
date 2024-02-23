@@ -16,60 +16,60 @@ import './Sidebar.scss';
 
 function SideBar({ openSidebar, openSidebarMenu }) {
   return (
-    <aside id="sidebar" className={openSidebar ? 'sidebar-responsive' : ''}>
-      <div className="sidebar-title">
-        <div className="sidebar-admin">ADMIN</div>
-        <span className="icon close_icon" onClick={openSidebarMenu}>
+    <aside id="sidebar" className={openSidebar ? 'sidebarResponsive' : ''}>
+      <div className="sidebarTitle">
+        <div className="sidebarAdmin">ADMIN</div>
+        <span className="icon closeIcon" onClick={openSidebarMenu}>
           X
         </span>
       </div>
-      <ul className="sidebar-list">
-        <li className="sidebar-list-item">
+      <ul className="sidebarList">
+        <li className="sidebarListItem">
           <Link to="/admins">
             <BsGrid1X2Fill className="icon" /> Dashboard
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="/admins/user">
             <BsPeopleFill className="icon" /> Users
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="">
             <BiSolidCategory className="icon" /> Categories
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="">
             <BiSolidCategoryAlt className="icon" /> Sub-Categories
           </Link>
         </li>
-        <li className="sidebar-list-item">
-          <Link to="">
+        <li className="sidebarListItem">
+          <Link to="/admins/products">
             <BsFillArchiveFill className="icon" /> Products
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="">
             <BsListCheck className="icon" /> Inventory
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="">
             <FaShoppingBasket className="icon" /> Orders
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="">
             <TfiWrite className="icon" /> Notices
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="">
             <TbUserQuestion className="icon" /> QnA
           </Link>
         </li>
-        <li className="sidebar-list-item">
+        <li className="sidebarListItem">
           <Link to="">
             <RiAdminFill className="icon" /> Admins
           </Link>

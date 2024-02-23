@@ -11,13 +11,13 @@ import './Header.scss';
 function Header({ openSidebarMenu }) {
   return (
     <header className="header">
-      <div className="menu-icon">
+      <div className="menuIcon">
         <BsJustify className="icon" onClick={openSidebarMenu} />
       </div>
-      <div className="header-left">
+      <div className="headerLeft">
         <BsSearch className="icon" />
       </div>
-      <div className="header-right">
+      <div className="headerRight">
         <BsFillBellFill className="icon" />
         <BsFillEnvelopeOpenFill className="icon" />
         <BsPersonCircle className="icon" />
