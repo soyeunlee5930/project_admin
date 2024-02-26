@@ -3,6 +3,7 @@ import './AddProduct.scss';
 
 const AddProduct = () => {
   const [productName, setProductName] = useState('');
+  const [subCategoryList, setSubCategoryList] = useState([]);
   const [subCategories, setSubCategories] = useState('');
   const [productDiscountRate, setProductDiscountRate] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -28,6 +29,12 @@ const AddProduct = () => {
       setAccumulatedAmount('');
     }
   }, [productDiscountPrice]);
+
+  useEffect(() => {
+    fetch('/data/subcategory.json')
+      .then(res => res.json())
+      .then(data => setSubCategoryList(data));
+  }, []);
 
   const handleProductSubmit = event => {
     event.preventDefault();
@@ -73,11 +80,14 @@ const AddProduct = () => {
               onChange={e => setSubCategories(e.target.value)}
             >
               <option value="">선택되지 않음</option>
-              <option value="EARRING">EARRING</option>
-              <option value="NECKLACE">NECKLACE</option>
-              <option value="RING">RING</option>
-              <option value="BRACELET">BRACELET</option>
-              <option value="ANKLET">ANKLET</option>
+              {subCategoryList.map(subCategory => (
+                <option
+                  key={subCategory.id}
+                  value={subCategory.sub_category_name}
+                >
+                  {subCategory.sub_category_name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="inputContainer">

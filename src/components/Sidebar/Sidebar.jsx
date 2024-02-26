@@ -7,7 +7,6 @@ import {
   BsListCheck,
 } from 'react-icons/bs';
 import { BiSolidCategory } from 'react-icons/bi';
-import { BiSolidCategoryAlt } from 'react-icons/bi';
 import { FaShoppingBasket } from 'react-icons/fa';
 import { TfiWrite } from 'react-icons/tfi';
 import { TbUserQuestion } from 'react-icons/tb';
@@ -37,11 +36,6 @@ function SideBar({ openSidebar, openSidebarMenu }) {
         <li className="sidebarListItem">
           <Link to="/admins/categories">
             <BiSolidCategory className="icon" /> Categories
-          </Link>
-        </li>
-        <li className="sidebarListItem">
-          <Link to="">
-            <BiSolidCategoryAlt className="icon" /> Sub-Categories
           </Link>
         </li>
         <li className="sidebarListItem">

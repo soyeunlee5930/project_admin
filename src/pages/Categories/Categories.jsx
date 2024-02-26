@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Categories.scss';
 
@@ -8,6 +8,21 @@ const Categories = () => {
   const moveCategorynSubCategoryAddPage = () => {
     navigate('/admins/categories/add');
   };
+
+  useEffect(() => {
+    fetch('/data/category.json')
+      .then(res => res.json())
+      .then(data => setCategoryList(data));
+  }, []);
+
+  useEffect(() => {
+    fetch('/data/subcategory.json')
+      .then(res => res.json())
+      .then(data => setSubCategoryList(data));
+  }, []);
+
+  const [categoryList, setCategoryList] = useState([]);
+  const [subCategoryList, setSubCategoryList] = useState([]);
 
   return (
     <div className="categories">
@@ -29,24 +44,17 @@ const Categories = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="productsInfo">
-              <td>1</td>
-              <td>GOLD</td>
-              <td>
-                <button>수정</button>
-                <span> | </span>
-                <button>삭제</button>
-              </td>
-            </tr>
-            <tr className="productsInfo">
-              <td>2</td>
-              <td>SILVER</td>
-              <td>
-                <button>수정</button>
-                <span> | </span>
-                <button>삭제</button>
-              </td>
-            </tr>
+            {categoryList.map((category, index) => (
+              <tr key={index} className="productsInfo">
+                <td>{index + 1}</td>
+                <td>{category.category_name}</td>
+                <td>
+                  <button>수정</button>
+                  <span> | </span>
+                  <button>삭제</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -56,48 +64,22 @@ const Categories = () => {
           <thead>
             <tr>
               <th>번호</th>
-              <th>카테고리명</th>
               <th>서브카테고리명</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="productsInfo">
-              <td>1</td>
-              <td>GOLD</td>
-              {/* <td>
-                <select
-                  name="productCategory"
-                  id="productCategory"
-                  value={categories}
-                  onChange={e => setCategories(e.target.value)}
-                >
-                  <option value="">선택되지 않음</option>
-                  <option value="EARRING">EARRING</option>
-                  <option value="NECKLACE">NECKLACE</option>
-                  <option value="RING">RING</option>
-                  <option value="BRACELET">BRACELET</option>
-                  <option value="ANKLET">ANKLET</option>
-                </select>
-              </td> */}
-              <td>EARING</td>
-              <td>
-                <button>수정</button>
-                <span> | </span>
-                <button>삭제</button>
-              </td>
-            </tr>
-            {/* {productsData.map((product, index) => (
+            {subCategoryList.map((subCategory, index) => (
               <tr key={index} className="productsInfo">
                 <td>{index + 1}</td>
-                <td>{subcategory.sub_category_name}</td>
+                <td>{subCategory.sub_category_name}</td>
                 <td>
                   <button>수정</button>
                   <span> | </span>
                   <button>삭제</button>
                 </td>
               </tr>
-            ))} */}
+            ))}
           </tbody>
         </table>
       </div>
