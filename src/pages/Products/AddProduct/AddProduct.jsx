@@ -1,6 +1,4 @@
 import { React, useState, useEffect } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import './AddProduct.scss';
 
 const AddProduct = () => {
@@ -11,7 +9,6 @@ const AddProduct = () => {
   const [productDiscountPrice, setProductDiscountPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
   const [accumulatedAmount, setAccumulatedAmount] = useState('');
-  const [productDescription, setProductDescription] = useState('');
 
   useEffect(() => {
     if (productDiscountRate !== '' && productPrice !== '') {
@@ -45,7 +42,6 @@ const AddProduct = () => {
     setProductDiscountPrice('');
     setProductQuantity('');
     setAccumulatedAmount('');
-    setProductDescription('');
   };
 
   return (
@@ -135,23 +131,14 @@ const AddProduct = () => {
               readOnly
             />
           </div>
-          <div className="textareaContainer">
+          <div className="descriptionImageContainer">
             <label htmlFor="productDescription">상품 설명</label>
-            {/* <textarea
+            <input
+              type="file"
               name="productDescription"
               id="productDescription"
-              value={productDescription}
-              onChange={e => setProductDescription(e.target.value)}
-            /> */}
-            <ReactQuill
-              name="productDescription"
-              id="productDescription"
-              className="productDescription"
-              theme="snow"
-              // modules={modules}
-              // formats={formats}
-              value={productDescription || ''}
-              onChange={e => setProductDescription(e.target.value)}
+              accept="image/*"
+              required
             />
           </div>
           <div className="imageContainer">
@@ -164,20 +151,19 @@ const AddProduct = () => {
               required
             />
           </div>
-          <div className="detailImageContainer">
+          <div className="imageContainer">
             <label htmlFor="detailImg">상세이미지</label>
-            <div className="inputFileContainer">
-              <input
-                type="file"
-                name="detailImg"
-                id="detailImg"
-                accept="image/*"
-                multiple
-              />
-              <div className="fileList" />
-            </div>
+            <input
+              type="file"
+              name="detailImg"
+              id="detailImg"
+              accept="image/*"
+              multiple
+            />
           </div>
-          <button type="submit">상품 등록</button>
+          <div className="submitBtn">
+            <button type="submit">상품 등록</button>
+          </div>
         </form>
       </div>
     </div>

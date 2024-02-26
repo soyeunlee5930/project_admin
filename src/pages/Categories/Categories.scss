@@ -1,0 +1,93 @@
+.categories {
+  padding: 20px 20px;
+  font-size: 22px;
+
+  .moveCategorynSubCategoryAddPageBtn {
+    display: flex;
+    margin-top: 30px;
+    margin-left: auto;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    outline: 0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background-color: blue;
+      color: white;
+    }
+  }
+
+  .categoriesList,
+  .subCategoriesList {
+    margin-top: 20px;
+
+    table {
+      table-layout: fixed;
+      padding: 15px 15px;
+      width: 100%;
+      border: 1px solid gray;
+      border-collapse: separate;
+      border-radius: 10px;
+      font-size: 0.7em;
+    }
+
+    thead {
+      font-weight: bold;
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .productsInfo {
+        button {
+          width: 50px;
+          height: 25px;
+          border: 0;
+          border-radius: 10px;
+          outline: 0;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: bold;
+          transition: background-color 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: blue;
+            color: white;
+          }
+        }
+
+        td span {
+          display: inline;
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+    }
+
+    th {
+      text-align: left;
+    }
+
+    th,
+    td {
+      vertical-align: middle;
+      padding: 1em 0.5em;
+      border-bottom: 1px solid gray;
+    }
+  }
+
+  .mainList {
+    margin-top: 30px;
+  }
+
+  .subList {
+    margin-top: 50px;
+  }
+}

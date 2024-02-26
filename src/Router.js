@@ -7,7 +7,8 @@ import Home from './pages/Home/Home';
 import User from './pages/User/User';
 import Products from './pages/Products/Products';
 import AddProduct from './pages/Products/AddProduct/AddProduct';
-import Editor from './components/Editor/Editor';
+import Categories from './pages/Categories/Categories';
+import AddCategory from './pages/Categories/AddCategory/AddCategory';
 
 const Router = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -27,7 +28,8 @@ const Router = () => {
           <Route path="/admins/user" element={<User />} />
           <Route path="/admins/products" element={<Products />} />
           <Route path="/admins/products/add" element={<AddProduct />} />
-          <Route path="/editor" element={<Editor />} />
+          <Route path="/admins/categories" element={<Categories />} />
+          <Route path="/admins/categories/add" element={<AddCategory />} />
         </Routes>
       </div>
     </BrowserRouter>

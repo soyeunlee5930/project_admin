@@ -35,7 +35,7 @@ function SideBar({ openSidebar, openSidebarMenu }) {
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="">
+          <Link to="/admins/categories">
             <BiSolidCategory className="icon" /> Categories
           </Link>
         </li>

@@ -11,8 +11,14 @@
     border-radius: 10px;
     outline: 0;
     text-decoration: none;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+
+    &:hover {
+      background-color: blue;
+      color: white;
+    }
   }
 
   .productsList {
@@ -22,9 +28,15 @@
       padding: 15px 15px;
       width: 100%;
       border: 1px solid gray;
-      border-collapse: collapse;
+      border-collapse: separate;
       border-radius: 10px;
       font-size: 0.7em;
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
     }
 
     thead {
