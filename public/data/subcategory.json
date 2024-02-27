@@ -1,22 +1,27 @@
 [
   {
     "id": 1,
-    "sub_category_name": "EARRING"
+    "sub_category_name": "EARRING",
+    "category_name": "92.5 SILVER"
   },
   {
     "id": 2,
-    "sub_category_name": "NECKLACE"
+    "sub_category_name": "NECKLACE",
+    "category_name": "92.5 SILVER"
   },
   {
     "id": 3,
-    "sub_category_name": "RING"
+    "sub_category_name": "RING",
+    "category_name": "14K GOLD"
   },
   {
     "id": 4,
-    "sub_category_name": "BRACELET"
+    "sub_category_name": "BRACELET",
+    "category_name": "92.5 SILVER"
   },
   {
     "id": 5,
-    "sub_category_name": "ANKLET"
+    "sub_category_name": "ANKLET",
+    "category_name": "14K GOLD"
   }
 ]

@@ -9,20 +9,38 @@ const Categories = () => {
     navigate('/admins/categories/add');
   };
 
+  const [categoryList, setCategoryList] = useState([]);
+  const [subCategoryList, setSubCategoryList] = useState([]);
+
   useEffect(() => {
-    fetch('/data/category.json')
-      .then(res => res.json())
-      .then(data => setCategoryList(data));
-  }, []);
+    fetch('http://localhost:8080/admins/categories', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        setCategoryList(data);
+      })
+      .catch(error => {
+        console.error(
+          '서버에서 데이터를 가져오는 중 에러가 발생했습니다',
+          error,
+        );
+      });
+  }, [categoryList]);
 
   useEffect(() => {
     fetch('/data/subcategory.json')
       .then(res => res.json())
       .then(data => setSubCategoryList(data));
   }, []);
-
-  const [categoryList, setCategoryList] = useState([]);
-  const [subCategoryList, setSubCategoryList] = useState([]);
 
   return (
     <div className="categories">
@@ -64,6 +82,7 @@ const Categories = () => {
           <thead>
             <tr>
               <th>번호</th>
+              <th>카테고리명</th>
               <th>서브카테고리명</th>
               <th>Action</th>
             </tr>
@@ -72,6 +91,7 @@ const Categories = () => {
             {subCategoryList.map((subCategory, index) => (
               <tr key={index} className="productsInfo">
                 <td>{index + 1}</td>
+                <td>{subCategory.category_name}</td>
                 <td>{subCategory.sub_category_name}</td>
                 <td>
                   <button>수정</button>

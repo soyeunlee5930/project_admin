@@ -3,9 +3,27 @@ import './AddCategory.scss';
 
 const AddCategory = () => {
   useEffect(() => {
-    fetch('/data/category.json')
-      .then(res => res.json())
-      .then(data => setCategories(data));
+    fetch('http://localhost:8080/admins/categories', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        setCategories(data);
+      })
+      .catch(error => {
+        console.error(
+          '서버에서 데이터를 가져오는 중 에러가 발생했습니다',
+          error,
+        );
+      });
   }, []);
 
   const [categoryName, setCategoryName] = useState('');
@@ -13,13 +31,33 @@ const AddCategory = () => {
   const [categories, setCategories] = useState([]);
   const [subCategoryName, setSubCategoryName] = useState('');
 
+  const sendCategoryData = async () => {
+    try {
+      const response = await fetch('/admins/categories/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          category_name: categoryName,
+        }),
+      });
+
+      if (response.ok) {
+        alert('카테고리 등록 완료');
+        setCategoryName('');
+      } else {
+        alert('카테고리 등록 실패');
+      }
+    } catch (error) {
+      console.error('서버와의 통신 중 오류가 발생했습니다', error);
+      alert('서버와의 통신 중 오류 발생');
+    }
+  };
+
   const handleCategorySubmit = event => {
     event.preventDefault();
-
-    // 서버로 상품 등록 정보 보내기, alert로 등록 완료 띄우기
-
-    // 상품 등록 후 내용 초기화
-    setCategoryName('');
+    sendCategoryData();
   };
 
   const handleSubCategorySubmit = event => {
