@@ -12,7 +12,7 @@ const Categories = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
 
-  useEffect(() => {
+  const getCategories = () => {
     fetch('http://localhost:8080/admins/categories', {
       method: 'GET',
       headers: {
@@ -34,13 +34,38 @@ const Categories = () => {
           error,
         );
       });
-  }, [categoryList]);
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   useEffect(() => {
     fetch('/data/subcategory.json')
       .then(res => res.json())
       .then(data => setSubCategoryList(data));
   }, []);
+
+  const handleDeleteCategory = categoryId => {
+    fetch(`http://localhost:8080/admins/categories/${categoryId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        if (res.ok) {
+          alert('카테고리 삭제 완료');
+          getCategories();
+        } else {
+          throw new Error('카테고리 삭제 실패');
+        }
+      })
+      .catch(error => {
+        console.error('서버와의 통신 중 오류가 발생했습니다', error);
+        alert('서버와의 통신 중 오류 발생');
+      });
+  };
 
   return (
     <div className="categories">
@@ -71,7 +96,9 @@ const Categories = () => {
                     <button>수정</button>
                   </Link>
                   <span> | </span>
-                  <button>삭제</button>
+                  <button onClick={() => handleDeleteCategory(category.id)}>
+                    삭제
+                  </button>
                 </td>
               </tr>
             ))}
