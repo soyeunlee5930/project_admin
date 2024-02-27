@@ -6,7 +6,7 @@ const Products = () => {
   const navigate = useNavigate();
 
   const moveProductAddPage = () => {
-    navigate('/admins/products/add');
+    navigate('/products/add');
   };
   return (
     <div className="products">

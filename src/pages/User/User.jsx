@@ -8,7 +8,7 @@ const User = () => {
 
   useEffect(() => {
     // fetch('/data/user.json')
-    fetch('http://localhost:8080/rest/all', {
+    fetch('http://localhost:8080/admins/users/all', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

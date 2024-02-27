@@ -9,6 +9,7 @@ import Products from './pages/Products/Products';
 import AddProduct from './pages/Products/AddProduct/AddProduct';
 import Categories from './pages/Categories/Categories';
 import AddCategory from './pages/Categories/AddCategory/AddCategory';
+import UpdateCategory from './pages/Categories/UpdateCategory/UpdateCategory';
 
 const Router = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -23,13 +24,14 @@ const Router = () => {
         <Header openSidebarMenu={openSidebarMenu} />
         <Sidebar openSidebar={openSidebar} openSidebarMenu={openSidebarMenu} />
         <Routes>
-          <Route path="/admins" element={<Home />} />
-          <Route path="/admins/login" element={<Login />} />
-          <Route path="/admins/user" element={<User />} />
-          <Route path="/admins/products" element={<Products />} />
-          <Route path="/admins/products/add" element={<AddProduct />} />
-          <Route path="/admins/categories" element={<Categories />} />
-          <Route path="/admins/categories/add" element={<AddCategory />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/add" element={<AddProduct />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/add" element={<AddCategory />} />
+          <Route path="/categories/:id" element={<UpdateCategory />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,12 +1,12 @@
 import { React, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Categories.scss';
 
 const Categories = () => {
   const navigate = useNavigate();
 
   const moveCategorynSubCategoryAddPage = () => {
-    navigate('/admins/categories/add');
+    navigate('/categories/add');
   };
 
   const [categoryList, setCategoryList] = useState([]);
@@ -67,7 +67,9 @@ const Categories = () => {
                 <td>{index + 1}</td>
                 <td>{category.category_name}</td>
                 <td>
-                  <button>수정</button>
+                  <Link to={`/categories/${category.id}`}>
+                    <button>수정</button>
+                  </Link>
                   <span> | </span>
                   <button>삭제</button>
                 </td>

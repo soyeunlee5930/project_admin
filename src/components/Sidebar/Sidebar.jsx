@@ -24,22 +24,22 @@ function SideBar({ openSidebar, openSidebarMenu }) {
       </div>
       <ul className="sidebarList">
         <li className="sidebarListItem">
-          <Link to="/admins">
+          <Link to="/">
             <BsGrid1X2Fill className="icon" /> Dashboard
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="/admins/user">
+          <Link to="/user">
             <BsPeopleFill className="icon" /> Users
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="/admins/categories">
+          <Link to="/categories">
             <BiSolidCategory className="icon" /> Categories
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="/admins/products">
+          <Link to="/products">
             <BsFillArchiveFill className="icon" /> Products
           </Link>
         </li>

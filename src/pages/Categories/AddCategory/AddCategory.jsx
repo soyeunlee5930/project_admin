@@ -63,6 +63,17 @@ const AddCategory = () => {
   const handleSubCategorySubmit = event => {
     event.preventDefault();
 
+    const selectedCategory = categories.find(
+      category => category.category_name === categoryChoice,
+    );
+
+    console.log(selectedCategory);
+
+    if (!selectedCategory) {
+      alert('메인 카테고리를 선택하세요.');
+      return;
+    }
+
     // 서버로 상품 등록 정보 보내기, alert로 등록 완료 띄우기
 
     // 상품 등록 후 내용 초기화
