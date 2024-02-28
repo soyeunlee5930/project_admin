@@ -5,8 +5,12 @@ import './Categories.scss';
 const Categories = () => {
   const navigate = useNavigate();
 
-  const moveCategorynSubCategoryAddPage = () => {
+  const moveCategoryAddPage = () => {
     navigate('/categories/add');
+  };
+
+  const moveSubCategoryAddPage = () => {
+    navigate('/subcategories/add');
   };
 
   const [categoryList, setCategoryList] = useState([]);
@@ -36,14 +40,33 @@ const Categories = () => {
       });
   };
 
-  useEffect(() => {
-    getCategories();
-  }, []);
+  const getSubCategories = () => {
+    fetch('http://localhost:8080/admins/subcategories', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        setSubCategoryList(data);
+      })
+      .catch(error => {
+        console.error(
+          '서버에서 데이터를 가져오는 중 에러가 발생했습니다',
+          error,
+        );
+      });
+  };
 
   useEffect(() => {
-    fetch('/data/subcategory.json')
-      .then(res => res.json())
-      .then(data => setSubCategoryList(data));
+    getCategories();
+    getSubCategories();
   }, []);
 
   const handleDeleteCategory = categoryId => {
@@ -70,13 +93,10 @@ const Categories = () => {
   return (
     <div className="categories">
       <h1>카테고리/서브카테고리 관리</h1>
-      <button
-        className="moveCategorynSubCategoryAddPageBtn"
-        onClick={moveCategorynSubCategoryAddPage}
-      >
-        카테고리/서브카테고리 등록
-      </button>
       <h2 className="mainList">카테고리 목록</h2>
+      <button className="moveCategoryAddPage" onClick={moveCategoryAddPage}>
+        카테고리 등록
+      </button>
       <div className="categoriesList">
         <table>
           <thead>
@@ -106,6 +126,12 @@ const Categories = () => {
         </table>
       </div>
       <h2 className="subList">서브카테고리 목록</h2>
+      <button
+        className="moveSubCategoryAddPage"
+        onClick={moveSubCategoryAddPage}
+      >
+        서브카테고리 등록
+      </button>
       <div className="subCategoriesList">
         <table>
           <thead>
@@ -123,7 +149,9 @@ const Categories = () => {
                 <td>{subCategory.category_name}</td>
                 <td>{subCategory.sub_category_name}</td>
                 <td>
-                  <button>수정</button>
+                  <Link to={`/subcategories/${subCategory.id}`}>
+                    <button>수정</button>
+                  </Link>
                   <span> | </span>
                   <button>삭제</button>
                 </td>

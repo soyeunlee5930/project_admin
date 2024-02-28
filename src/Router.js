@@ -9,7 +9,9 @@ import Products from './pages/Products/Products';
 import AddProduct from './pages/Products/AddProduct/AddProduct';
 import Categories from './pages/Categories/Categories';
 import AddCategory from './pages/Categories/AddCategory/AddCategory';
+import AddSubCategory from './pages/Categories/AddSubCategory/AddSubCategory';
 import UpdateCategory from './pages/Categories/UpdateCategory/UpdateCategory';
+import UpdateSubCategory from './pages/Categories/UpdateSubCategory/UpdateSubCategory';
 
 const Router = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -31,7 +33,9 @@ const Router = () => {
           <Route path="/products/add" element={<AddProduct />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/add" element={<AddCategory />} />
+          <Route path="/subcategories/add" element={<AddSubCategory />} />
           <Route path="/categories/:id" element={<UpdateCategory />} />
+          <Route path="/subcategories/:id" element={<UpdateSubCategory />} />
         </Routes>
       </div>
     </BrowserRouter>
