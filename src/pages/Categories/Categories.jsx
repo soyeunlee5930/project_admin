@@ -90,6 +90,27 @@ const Categories = () => {
       });
   };
 
+  const handleDeleteSubCategory = subCategoryId => {
+    fetch(`http://localhost:8080/admins/subcategories/${subCategoryId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        if (res.ok) {
+          alert('서브카테고리 삭제 완료');
+          getSubCategories();
+        } else {
+          throw new Error('서브카테고리 삭제 실패');
+        }
+      })
+      .catch(error => {
+        console.error('서버와의 통신 중 오류가 발생했습니다', error);
+        alert('서버와의 통신 중 오류 발생');
+      });
+  };
+
   return (
     <div className="categories">
       <h1>카테고리/서브카테고리 관리</h1>
@@ -153,7 +174,11 @@ const Categories = () => {
                     <button>수정</button>
                   </Link>
                   <span> | </span>
-                  <button>삭제</button>
+                  <button
+                    onClick={() => handleDeleteSubCategory(subCategory.id)}
+                  >
+                    삭제
+                  </button>
                 </td>
               </tr>
             ))}

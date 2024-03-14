@@ -61,9 +61,9 @@ const AddSubCategory = () => {
       })
         .then(res => {
           if (!res.ok) {
-            alert('카테고리 등록 실패');
+            alert('서브카테고리 등록 실패');
           }
-          alert('카테고리 등록 완료');
+          alert('서브카테고리 등록 완료');
           setCategoryChoice('');
           setSubCategoryName('');
         })

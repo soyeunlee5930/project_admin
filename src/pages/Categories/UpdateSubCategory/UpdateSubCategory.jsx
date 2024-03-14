@@ -11,31 +11,11 @@ const UpdateSubCategory = () => {
   const [subCategoryName, setSubCategoryName] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:8080/admins/subcategories/${subCategoryId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then(data => {
-        setSubCategoryName(data.sub_category_name);
-      })
-      .catch(error => {
-        console.error(
-          '서버에서 데이터를 가져오는 중 에러가 발생했습니다',
-          error,
-        );
-      });
-  }, [subCategoryId]);
+    getCategoryList();
+  }, []);
 
   // 서브카테고리 select에 사용할 카테고리 목록 가져오기
-  useEffect(() => {
+  const getCategoryList = () => {
     fetch('http://localhost:8080/admins/categories', {
       method: 'GET',
       headers: {
@@ -50,6 +30,7 @@ const UpdateSubCategory = () => {
       })
       .then(data => {
         setCategories(data);
+        getSubCategoryData(data);
       })
       .catch(error => {
         console.error(
@@ -57,36 +38,38 @@ const UpdateSubCategory = () => {
           error,
         );
       });
-  }, []);
+  };
 
-  // const sendUpdateCategoryData = async () => {
-  //   try {
-  //     const response = await fetch(`/admins/categories/${categoryId}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         id: categoryId,
-  //         category_name: categoryName,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       alert('카테고리 수정 완료');
-  //     } else {
-  //       alert('카테고리 수정 실패');
-  //     }
-  //   } catch (error) {
-  //     console.error('서버와의 통신 중 오류가 발생했습니다', error);
-  //     alert('서버와의 통신 중 오류 발생');
-  //   }
-  // };
-
-  // const handleCategorySubmit = event => {
-  //   event.preventDefault();
-  //   sendUpdateCategoryData();
-  // };
+  const getSubCategoryData = categoriesData => {
+    fetch(`http://localhost:8080/admins/subcategories/${subCategoryId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        setSubCategoryName(data.sub_category_name);
+        const categoryId = data.category_id;
+        const category = categoriesData.find(
+          category => category.id === categoryId,
+        );
+        if (category) {
+          setCategoryChoice(category.category_name);
+        }
+      })
+      .catch(error => {
+        console.error(
+          '서버에서 데이터를 가져오는 중 에러가 발생했습니다',
+          error,
+        );
+      });
+  };
 
   const handleSubCategorySubmit = event => {
     event.preventDefault();
@@ -95,18 +78,39 @@ const UpdateSubCategory = () => {
       category => category.category_name === categoryChoice,
     );
 
-    console.log(selectedCategory);
+    const selectedCategoryId = () =>
+      selectedCategory ? selectedCategory.id : null;
 
     if (!selectedCategory) {
       alert('메인 카테고리를 선택하세요.');
       return;
     }
 
-    // 서버로 상품 등록 정보 보내기, alert로 등록 완료 띄우기
-
-    // 상품 등록 후 내용 초기화
-    setCategoryChoice('');
-    setSubCategoryName('');
+    if (!subCategoryName) {
+      alert('서브카테고리명을 입력하세요');
+      return;
+    } else {
+      fetch(`http://localhost:8080/admins/subcategories/${subCategoryId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sub_category_name: subCategoryName,
+          category_id: selectedCategoryId(),
+        }),
+      })
+        .then(res => {
+          if (!res.ok) {
+            alert('서브카테고리 수정 실패');
+          }
+          alert('서브카테고리 수정 완료');
+        })
+        .catch(error => {
+          console.error('서버와의 통신 중 오류가 발생했습니다', error);
+          alert('서버와의 통신 중 오류 발생');
+        });
+    }
   };
 
   return (
