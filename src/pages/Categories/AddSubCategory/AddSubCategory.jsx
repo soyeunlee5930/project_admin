@@ -60,8 +60,12 @@ const AddSubCategory = () => {
         }),
       })
         .then(res => {
-          if (!res.ok) {
+          if (res.status === 409) {
+            alert('중복된 카테고리분류, 서브카테고리명입니다.');
+            return;
+          } else if (!res.ok) {
             alert('서브카테고리 등록 실패');
+            return;
           }
           alert('서브카테고리 등록 완료');
           setCategoryChoice('');

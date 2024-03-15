@@ -45,10 +45,14 @@ const UpdateCategory = () => {
         }),
       });
 
-      if (response.ok) {
-        alert('카테고리 수정 완료');
-      } else {
+      if (response.status === 409) {
+        alert('중복된 카테고리명입니다.');
+        return;
+      } else if (!response.ok) {
         alert('카테고리 수정 실패');
+        return;
+      } else {
+        alert('카테고리 수정 완료');
       }
     } catch (error) {
       console.error('서버와의 통신 중 오류가 발생했습니다', error);
