@@ -20,7 +20,7 @@ const Products = () => {
             <tr>
               <th>번호</th>
               <th>상품명</th>
-              <th>서브카테고리</th>
+              <th>카테고리</th>
               <th>할인율</th>
               <th>가격</th>
               <th>할인가격</th>
@@ -40,7 +40,7 @@ const Products = () => {
               <tr key={index} className="productsInfo">
                 <td>{index + 1}</td>
                 <td>{product.product_name}</td>
-                <td>{product.sub_category_id}</td>
+                <td>{product.category_name}</td>
                 <td>{product.discount_rate}</td>
                 <td>{product.price}</td>
                 <td>{product.discount_price}</td>

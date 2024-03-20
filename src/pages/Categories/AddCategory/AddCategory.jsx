@@ -5,7 +5,7 @@ const AddCategory = () => {
   const [categoryName, setCategoryName] = useState('');
 
   const sendCategoryData = async () => {
-    if (!categoryName) {
+    if (!categoryName.trim()) {
       alert('카테고리명을 입력하세요');
       return;
     } else {

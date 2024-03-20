@@ -45,7 +45,7 @@ const AddSubCategory = () => {
       return;
     }
 
-    if (!subCategoryName) {
+    if (!subCategoryName.trim()) {
       alert('서브카테고리명을 입력하세요');
       return;
     } else {
