@@ -5,10 +5,10 @@ const AddProduct = () => {
   const [productName, setProductName] = useState('');
   const [categoryList, setCategoryList] = useState([]); // select option 출력
   const [categoryId, setCategoryId] = useState(''); // 선택한 카테고리
-  const [productDiscountRate, setProductDiscountRate] = useState(''); // 할인율
-  const [productPrice, setProductPrice] = useState('');
-  const [productDiscountPrice, setProductDiscountPrice] = useState(''); // 할인금액
-  const [productQuantity, setProductQuantity] = useState('');
+  const [discountRate, setDiscountRate] = useState(''); // 할인율
+  const [price, setPrice] = useState('');
+  const [discountPrice, setDiscountPrice] = useState(''); // 할인금액
+  const [quantity, setQuantity] = useState('');
   const [accumulatedAmount, setAccumulatedAmount] = useState(''); // 적립금
   const [productCode, setProductCode] = useState('');
   const [deliveryCountry, setDeliveryCountry] = useState('');
@@ -20,29 +20,28 @@ const AddProduct = () => {
   const [detailImgFiles, setDetailImgFiles] = useState(null);
 
   const productNameRef = useRef(null);
-  const productDiscountRateRef = useRef(null);
-  const productPriceRef = useRef(null);
-  const productQuantityRef = useRef(null);
+  const discountRateRef = useRef(null);
+  const priceRef = useRef(null);
+  const quantityRef = useRef(null);
   const productCodeRef = useRef(null);
 
   useEffect(() => {
-    if (productDiscountRate !== '' && productPrice !== '') {
-      const discountedPrice =
-        productPrice - (productPrice * productDiscountRate) / 100;
-      setProductDiscountPrice(discountedPrice);
+    if (discountRate !== '' && price !== '') {
+      const discountedPrice = price - (price * discountRate) / 100;
+      setDiscountPrice(discountedPrice);
     } else {
-      setProductDiscountPrice('');
+      setDiscountPrice('');
     }
-  }, [productDiscountRate, productPrice]);
+  }, [discountRate, price]);
 
   useEffect(() => {
-    if (productDiscountPrice) {
-      const accumulatedAmountByProduct = productDiscountPrice / 100;
+    if (discountPrice) {
+      const accumulatedAmountByProduct = discountPrice / 100;
       setAccumulatedAmount(accumulatedAmountByProduct);
     } else {
       setAccumulatedAmount('');
     }
-  }, [productDiscountPrice]);
+  }, [discountPrice]);
 
   useEffect(() => {
     getCategoryList();
@@ -86,21 +85,21 @@ const AddProduct = () => {
       return;
     }
 
-    if (!productDiscountRate.trim()) {
+    if (!discountRate.trim()) {
       alert('상품의 할인율을 입력해주세요');
-      productDiscountRateRef.current.focus();
+      discountRateRef.current.focus();
       return;
     }
 
-    if (!productPrice.trim()) {
+    if (!price.trim()) {
       alert('상품의 가격을 입력해주세요');
-      productPriceRef.current.focus();
+      priceRef.current.focus();
       return;
     }
 
-    if (!productQuantity.trim()) {
+    if (!quantity.trim()) {
       alert('상품의 수량을 입력해주세요');
-      productQuantityRef.current.focus();
+      quantityRef.current.focus();
       return;
     }
 
@@ -113,10 +112,10 @@ const AddProduct = () => {
     const formData = new FormData();
     formData.append('productName', productName);
     formData.append('categoryId', categoryId);
-    formData.append('productDiscountRate', productDiscountRate);
-    formData.append('productPrice', productPrice);
-    formData.append('productDiscountPrice', productDiscountPrice);
-    formData.append('productQuantity', productQuantity);
+    formData.append('discountRate', discountRate);
+    formData.append('price', price);
+    formData.append('discountPrice', discountPrice);
+    formData.append('quantity', quantity);
     formData.append('accumulatedAmount', accumulatedAmount);
     formData.append('productCode', productCode);
     formData.append('deliveryCountry', deliveryCountry);
@@ -144,10 +143,10 @@ const AddProduct = () => {
         alert('상품 등록 완료');
         setProductName('');
         setCategoryId('');
-        setProductDiscountRate('');
-        setProductPrice('');
-        setProductDiscountPrice('');
-        setProductQuantity('');
+        setDiscountRate('');
+        setPrice('');
+        setDiscountPrice('');
+        setQuantity('');
         setAccumulatedAmount('');
         setProductCode('');
         setDeliveryCountry('');
@@ -199,50 +198,50 @@ const AddProduct = () => {
             </select>
           </div>
           <div className="inputContainer">
-            <label htmlFor="productDiscountRate">할인율</label>
+            <label htmlFor="discountRate">할인율</label>
             <input
               type="number"
-              name="productDiscountRate"
-              id="productDiscountRate"
-              value={productDiscountRate}
+              name="discountRate"
+              id="discountRate"
+              value={discountRate}
               placeholder="10%는 10으로 입력하세요"
-              onChange={e => setProductDiscountRate(e.target.value)}
-              ref={productDiscountRateRef}
+              onChange={e => setDiscountRate(e.target.value)}
+              ref={discountRateRef}
             />
           </div>
           <div className="inputContainer">
-            <label htmlFor="productPrice">가격</label>
+            <label htmlFor="price">가격</label>
             <input
               type="number"
-              name="productPrice"
-              id="productPrice"
-              value={productPrice}
+              name="price"
+              id="price"
+              value={price}
               placeholder="가격을 입력하세요"
-              onChange={e => setProductPrice(e.target.value)}
-              ref={productPriceRef}
+              onChange={e => setPrice(e.target.value)}
+              ref={priceRef}
             />
           </div>
           <div className="inputContainer">
-            <label htmlFor="productDiscountPrice">할인가격</label>
+            <label htmlFor="discountPrice">할인가격</label>
             <input
               type="number"
-              name="productDiscountPrice"
-              id="productDiscountPrice"
-              value={productDiscountPrice}
+              name="discountPrice"
+              id="discountPrice"
+              value={discountPrice}
               placeholder="할인율과 가격을 입력하면 자동으로 계산됩니다"
               readOnly
             />
           </div>
           <div className="inputContainer">
-            <label htmlFor="productQuantity">수량</label>
+            <label htmlFor="quantity">수량</label>
             <input
               type="number"
-              name="productQuantity"
-              id="productQuantity"
-              value={productQuantity}
+              name="quantity"
+              id="quantity"
+              value={quantity}
               placeholder="수량을 입력하세요"
-              onChange={e => setProductQuantity(e.target.value)}
-              ref={productQuantityRef}
+              onChange={e => setQuantity(e.target.value)}
+              ref={quantityRef}
             />
           </div>
           <div className="inputContainer">
