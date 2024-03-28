@@ -15,7 +15,7 @@ const AddCategory = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          category_name: categoryName,
+          categoryName: categoryName,
         }),
       })
         .then(res => {

@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "user_id": "test123",
+    "userId": "test123",
     "pwd": "test123",
     "name": "test",
-    "phone_num": "010-1111-2222",
+    "phoneNum": "010-1111-2222",
     "email": "test123@test.com",
     "gender": 1,
     "birth": "2000-01-01",
@@ -12,10 +12,10 @@
   },
   {
     "id": 2,
-    "user_id": "kim123",
+    "userId": "kim123",
     "pwd": "kim123",
     "name": "kim",
-    "phone_num": "010-3333-4444",
+    "phoneNum": "010-3333-4444",
     "email": "kim123@test.com",
     "gender": 0,
     "birth": "2002-07-15",
@@ -23,10 +23,10 @@
   },
   {
     "id": 3,
-    "user_id": "park123",
+    "userId": "park123",
     "pwd": "park123",
     "name": "park",
-    "phone_num": "010-5555-6666",
+    "phoneNum": "010-5555-6666",
     "email": "park123@test.com",
     "gender": 0,
     "birth": "1998-03-22",

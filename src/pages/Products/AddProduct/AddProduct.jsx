@@ -193,7 +193,7 @@ const AddProduct = () => {
               <option value="">선택되지 않음</option>
               {categoryList.map(category => (
                 <option key={category.id} value={category.id}>
-                  {category.category_name}
+                  {category.categoryName}
                 </option>
               ))}
             </select>

@@ -39,20 +39,20 @@ const Products = () => {
             {/* {productsData.map((product, index) => (
               <tr key={index} className="productsInfo">
                 <td>{index + 1}</td>
-                <td>{product.product_name}</td>
-                <td>{product.category_name}</td>
-                <td>{product.discount_rate}</td>
+                <td>{product.productName}</td>
+                <td>{product.categoryName}</td>
+                <td>{product.discountRate}</td>
                 <td>{product.price}</td>
-                <td>{product.discount_price}</td>
+                <td>{product.discountPrice}</td>
                 <td>{product.quantity}</td>
-                <td>{product.accumulated_amount}</td>
-                <td>{product.product_code}</td>
-                <td>{product.delivery_country}</td>
-                <td>{product.product_description}</td>
-                <td>{product.thumnail_image_url}</td>
-                <td>{product.detail_image_url}</td>
-                <td>{product.created_at}</td>
-                <td>{product.updated_at}</td>
+                <td>{product.accumulatedAmount}</td>
+                <td>{product.productCode}</td>
+                <td>{product.deliveryCountry}</td>
+                <td>{product.productDescription}</td>
+                <td>{product.thumnailImageUrl}</td>
+                <td>{product.detailImageUrl}</td>
+                <td>{product.createdAt}</td>
+                <td>{product.updatedAt}</td>
               </tr>
             ))} */}
           </tbody>

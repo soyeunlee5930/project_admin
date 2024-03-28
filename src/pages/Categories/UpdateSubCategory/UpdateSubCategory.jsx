@@ -54,13 +54,13 @@ const UpdateSubCategory = () => {
         return res.json();
       })
       .then(data => {
-        setSubCategoryName(data.sub_category_name);
-        const categoryId = data.category_id;
+        setSubCategoryName(data.subCategoryName);
+        const categoryId = data.categoryId;
         const category = categoriesData.find(
           category => category.id === categoryId,
         );
         if (category) {
-          setCategoryChoice(category.category_name);
+          setCategoryChoice(category.categoryName);
         }
       })
       .catch(error => {
@@ -75,7 +75,7 @@ const UpdateSubCategory = () => {
     event.preventDefault();
 
     const selectedCategory = categories.find(
-      category => category.category_name === categoryChoice,
+      category => category.categoryName === categoryChoice,
     );
 
     const selectedCategoryId = () =>
@@ -96,8 +96,8 @@ const UpdateSubCategory = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          sub_category_name: subCategoryName,
-          category_id: selectedCategoryId(),
+          subCategoryName: subCategoryName,
+          categoryId: selectedCategoryId(),
         }),
       })
         .then(res => {
@@ -133,8 +133,8 @@ const UpdateSubCategory = () => {
             >
               <option value="">선택되지 않음</option>
               {categories.map(category => (
-                <option key={category.id} value={category.category_name}>
-                  {category.category_name}
+                <option key={category.id} value={category.categoryName}>
+                  {category.categoryName}
                 </option>
               ))}
             </select>

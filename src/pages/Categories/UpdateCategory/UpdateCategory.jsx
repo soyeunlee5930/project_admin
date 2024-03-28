@@ -22,7 +22,7 @@ const UpdateCategory = () => {
         return res.json();
       })
       .then(data => {
-        setCategoryName(data.category_name);
+        setCategoryName(data.categoryName);
       })
       .catch(error => {
         console.error(
@@ -41,7 +41,7 @@ const UpdateCategory = () => {
         },
         body: JSON.stringify({
           id: categoryId,
-          category_name: categoryName,
+          categoryName: categoryName,
         }),
       });
 
