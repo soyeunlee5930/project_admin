@@ -125,13 +125,15 @@ const AddProduct = () => {
     for (let i = 0; i < detailImgFiles.length; i++) {
       formData.append('detailImg', detailImgFiles[i]);
     }
+    console.log(productName);
+    console.log(categoryId);
+    console.log(productDescriptionImgFile);
+    console.log(thumnailImgFile);
+    console.log(detailImgFiles);
 
     // 서버로 상품 등록 정보 보내기, alert로 등록 완료 띄우기
     fetch('http://localhost:8080/admins/products/add', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
       body: formData,
     })
       .then(res => {
@@ -309,7 +311,10 @@ const AddProduct = () => {
               name="detailImg"
               id="detailImg"
               accept="image/*"
-              onChange={e => setDetailImgFiles(e.target.files)}
+              onChange={e => {
+                setDetailImgFiles(e.target.files);
+                console.log(e.target.files);
+              }}
               multiple
               required
             />

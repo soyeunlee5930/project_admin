@@ -55,9 +55,9 @@ const User = () => {
               {userData.map((user, index) => (
                 <tr key={index} className="userInfo">
                   <td>{index + 1}</td>
-                  <td>{user.user_id}</td>
+                  <td>{user.userId}</td>
                   <td>{user.name}</td>
-                  <td>{user.phone_num}</td>
+                  <td>{user.phoneNum}</td>
                   <td>{user.email}</td>
                   <td>{user.gender === 0 ? '남성' : '여성'}</td>
                   <td>{user.birth}</td>

@@ -131,7 +131,7 @@ const Categories = () => {
             {categoryList.map((category, index) => (
               <tr key={index} className="productsInfo">
                 <td>{index + 1}</td>
-                <td>{category.category_name}</td>
+                <td>{category.categoryName}</td>
                 <td>
                   <Link to={`/categories/${category.id}`}>
                     <button>수정</button>
@@ -167,8 +167,8 @@ const Categories = () => {
             {subCategoryList.map((subCategory, index) => (
               <tr key={index} className="productsInfo">
                 <td>{index + 1}</td>
-                <td>{subCategory.category_name}</td>
-                <td>{subCategory.sub_category_name}</td>
+                <td>{subCategory.categoryName}</td>
+                <td>{subCategory.subCategoryName}</td>
                 <td>
                   <Link to={`/subcategories/${subCategory.id}`}>
                     <button>수정</button>
