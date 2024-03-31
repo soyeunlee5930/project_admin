@@ -60,7 +60,13 @@ const User = () => {
                   <td>{user.phoneNum}</td>
                   <td>{user.email}</td>
                   <td>{user.gender === 0 ? '남성' : '여성'}</td>
-                  <td>{user.birth}</td>
+                  <td>
+                    {new Date(user.birth).toLocaleDateString('ko-KR', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </td>
                   <td>{user.state === 0 ? '탈퇴' : '가입'}</td>
                 </tr>
               ))}
