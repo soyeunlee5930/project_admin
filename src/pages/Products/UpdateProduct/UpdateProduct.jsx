@@ -1,7 +1,11 @@
 import { React, useState, useEffect, useRef } from 'react';
-import './AddProduct.scss';
+import { useParams } from 'react-router-dom';
+import './UpdateProduct.scss';
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+  const params = useParams();
+  const productId = params.id;
+
   const [productName, setProductName] = useState('');
   const [categoryList, setCategoryList] = useState([]); // select option 출력
   const [categoryId, setCategoryId] = useState(''); // 선택한 카테고리
@@ -45,6 +49,7 @@ const AddProduct = () => {
 
   useEffect(() => {
     getCategoryList();
+    getProductData();
   }, []);
 
   const getCategoryList = () => {
@@ -71,7 +76,39 @@ const AddProduct = () => {
       });
   };
 
-  const handleProductSubmit = event => {
+  const getProductData = () => {
+    fetch(`http://localhost:3000/admins/products/${productId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        setProductName(data.productName);
+        setCategoryId(data.categoryId);
+        setDiscountRate(data.discountRate);
+        setPrice(data.price);
+        setDiscountPrice(data.discountPrice);
+        setQuantity(data.quantity);
+        setAccumulatedAmount(data.accumulatedAmount);
+        setProductCode(data.productCode);
+        setDeliveryCountry(data.deliveryCountry);
+      })
+      .catch(error => {
+        console.error(
+          '서버에서 데이터를 가져오는 중 에러가 발생했습니다',
+          error,
+        );
+      });
+  };
+
+  const handleProductUpdateSubmit = event => {
     event.preventDefault();
 
     if (!productName.trim()) {
@@ -126,28 +163,16 @@ const AddProduct = () => {
     }
 
     // 서버로 상품 등록 정보 보내기, alert로 등록 완료 띄우기
-    fetch('http://localhost:8080/admins/products/add', {
-      method: 'POST',
+    fetch(`http://localhost:8080/admins/products/${productId}`, {
+      method: 'PUT',
       body: formData,
     })
       .then(res => {
         if (!res.ok) {
-          alert('상품 등록 실패');
+          alert('상품 수정 실패');
           return;
         }
-        alert('상품 등록 완료');
-        setProductName('');
-        setCategoryId('');
-        setDiscountRate('');
-        setPrice('');
-        setDiscountPrice('');
-        setQuantity('');
-        setAccumulatedAmount('');
-        setProductCode('');
-        setDeliveryCountry('');
-        setProductDescriptionImgFile(null);
-        setThumnailImgFile(null);
-        setDetailImgFiles(null);
+        alert('상품 수정 완료');
       })
       .catch(error => {
         console.error('서버와의 통신 중 오류가 발생했습니다', error);
@@ -156,11 +181,11 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="addProduct">
-      <h1>상품 등록</h1>
+    <div className="updateProduct">
+      <h1>상품 수정</h1>
       <div className="productForm">
         <form
-          onSubmit={handleProductSubmit}
+          onSubmit={handleProductUpdateSubmit}
           method="POST"
           encType="multipart/form-data"
         >
@@ -276,7 +301,7 @@ const AddProduct = () => {
               <option value="2">국내,해외배송</option>
             </select>
           </div>
-          <div className="descriptionImageContainer">
+          <div className="imageContainer">
             <label htmlFor="productDescription">상품 설명</label>
             <input
               type="file"
@@ -313,7 +338,7 @@ const AddProduct = () => {
             />
           </div>
           <div className="submitBtn">
-            <button type="submit">상품 등록</button>
+            <button type="submit">상품 수정</button>
           </div>
         </form>
       </div>
@@ -321,4 +346,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

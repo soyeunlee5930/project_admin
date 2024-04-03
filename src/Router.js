@@ -7,6 +7,8 @@ import Home from './pages/Home/Home';
 import User from './pages/User/User';
 import Products from './pages/Products/Products';
 import AddProduct from './pages/Products/AddProduct/AddProduct';
+import ProductDetail from './pages/Products/ProductDetail/ProductDetail.jsx';
+import UpdateProduct from './pages/Products/UpdateProduct/UpdateProduct.jsx';
 import Categories from './pages/Categories/Categories';
 import AddCategory from './pages/Categories/AddCategory/AddCategory';
 import AddSubCategory from './pages/Categories/AddSubCategory/AddSubCategory';
@@ -31,6 +33,8 @@ const Router = () => {
           <Route path="/user" element={<User />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/add" element={<AddProduct />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/products/:id/edit" element={<UpdateProduct />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/add" element={<AddCategory />} />
           <Route path="/subcategories/add" element={<AddSubCategory />} />

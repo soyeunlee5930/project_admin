@@ -34,8 +34,18 @@
     }
 
     tbody {
+      tr {
+        cursor: pointer;
+      }
+
       tr:last-child td {
         border-bottom: none;
+      }
+
+      tr > td > img {
+        max-width: 100px;
+        height: auto;
+        display: block;
       }
     }
 
