@@ -122,19 +122,19 @@ const UpdateProduct = () => {
       return;
     }
 
-    if (!discountRate.trim()) {
+    if (!discountRate) {
       alert('상품의 할인율을 입력해주세요');
       discountRateRef.current.focus();
       return;
     }
 
-    if (!price.trim()) {
+    if (!price) {
       alert('상품의 가격을 입력해주세요');
       priceRef.current.focus();
       return;
     }
 
-    if (!quantity.trim()) {
+    if (!quantity) {
       alert('상품의 수량을 입력해주세요');
       quantityRef.current.focus();
       return;
@@ -156,10 +156,19 @@ const UpdateProduct = () => {
     formData.append('accumulatedAmount', accumulatedAmount);
     formData.append('productCode', productCode);
     formData.append('deliveryCountry', deliveryCountry);
-    formData.append('productDescription', productDescriptionImgFile);
-    formData.append('thumnailImg', thumnailImgFile);
-    for (let i = 0; i < detailImgFiles.length; i++) {
-      formData.append('detailImg', detailImgFiles[i]);
+
+    if (productDescriptionImgFile) {
+      formData.append('productDescription', productDescriptionImgFile);
+    }
+
+    if (thumnailImgFile) {
+      formData.append('thumnailImg', thumnailImgFile);
+    }
+
+    if (detailImgFiles) {
+      for (let i = 0; i < detailImgFiles.length; i++) {
+        formData.append('detailImg', detailImgFiles[i]);
+      }
     }
 
     // 서버로 상품 등록 정보 보내기, alert로 등록 완료 띄우기
@@ -186,7 +195,7 @@ const UpdateProduct = () => {
       <div className="productForm">
         <form
           onSubmit={handleProductUpdateSubmit}
-          method="POST"
+          method="PUT"
           encType="multipart/form-data"
         >
           <div className="inputContainer">
@@ -309,7 +318,6 @@ const UpdateProduct = () => {
               id="productDescription"
               accept="image/*"
               onChange={e => setProductDescriptionImgFile(e.target.files[0])}
-              required
             />
           </div>
           <div className="imageContainer">
@@ -320,7 +328,6 @@ const UpdateProduct = () => {
               id="thumnailImg"
               accept="image/*"
               onChange={e => setThumnailImgFile(e.target.files[0])}
-              required
             />
           </div>
           <div className="imageContainer">
@@ -334,7 +341,6 @@ const UpdateProduct = () => {
                 setDetailImgFiles(e.target.files);
               }}
               multiple
-              required
             />
           </div>
           <div className="submitBtn">

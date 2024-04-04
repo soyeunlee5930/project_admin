@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  BsGrid1X2Fill,
-  BsFillArchiveFill,
-  BsPeopleFill,
-  BsListCheck,
-} from 'react-icons/bs';
+import { BsGrid1X2Fill, BsFillArchiveFill, BsPeopleFill } from 'react-icons/bs';
 import { BiSolidCategory } from 'react-icons/bi';
 import { FaShoppingBasket } from 'react-icons/fa';
 import { TfiWrite } from 'react-icons/tfi';
@@ -41,11 +36,6 @@ function SideBar({ openSidebar, openSidebarMenu }) {
         <li className="sidebarListItem">
           <Link to="/products">
             <BsFillArchiveFill className="icon" /> Products
-          </Link>
-        </li>
-        <li className="sidebarListItem">
-          <Link to="">
-            <BsListCheck className="icon" /> Inventory
           </Link>
         </li>
         <li className="sidebarListItem">

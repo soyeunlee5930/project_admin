@@ -75,7 +75,7 @@ const ProductDetail = () => {
   };
 
   const getProductData = () => {
-    fetch(`http://localhost:3000/admins/products/${productId}`, {
+    fetch(`http://localhost:8080/admins/products/${productId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -228,12 +228,12 @@ const ProductDetail = () => {
               <img key={index} src={url} alt={`상세 이미지 ${index}`} />
             ))}
           </div>
-          <div className="productUpdateBtn">
-            <button onClick={() => moveUpdateProductPage(productId)}>
-              상품 수정
-            </button>
-          </div>
         </form>
+        <div className="productUpdateBtn">
+          <button onClick={() => moveUpdateProductPage(productId)}>
+            상품 수정
+          </button>
+        </div>
       </div>
     </div>
   );
