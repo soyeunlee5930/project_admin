@@ -1,5 +1,5 @@
-import { React, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { React, useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import './NoticeDetail.scss';
 
 const NoticeDetail = () => {
@@ -8,11 +8,9 @@ const NoticeDetail = () => {
 
   const params = useParams();
   const noticeId = params.id;
-  const navigate = useNavigate();
 
-  const moveUpdateNoticePage = noticeId => {
-    navigate(`/notices/${noticeId}/edit`);
-  };
+  const noticeTitleRef = useRef(null);
+  const noticeContentRef = useRef(null);
 
   const getNotice = () => {
     fetch(`http://localhost:8080/admins/notices/${noticeId}`, {
@@ -43,11 +41,52 @@ const NoticeDetail = () => {
     getNotice();
   }, []);
 
+  const handleNoticeUpdateSubmit = event => {
+    event.preventDefault();
+
+    if (!noticeTitle.trim()) {
+      alert('제목을 작성해주세요');
+      noticeTitleRef.current.focus();
+      return;
+    }
+
+    if (!noticeContent.trim()) {
+      alert('내용을 작성해주세요');
+      noticeContentRef.current.focus();
+      return;
+    }
+
+    fetch(`http://localhost:8080/admins/notices/${noticeId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        admin_id: 1,
+        title: noticeTitle,
+        content: noticeContent,
+      }),
+    })
+      .then(res => {
+        console.log(res);
+        if (!res.ok) {
+          alert('공지사항 수정 실패');
+          return;
+        } else {
+          alert('공지사항 수정 완료');
+        }
+      })
+      .catch(error => {
+        console.error('서버와의 통신 중 오류가 발생했습니다', error);
+        alert('서버와의 통신 중 오류 발생');
+      });
+  };
+
   return (
     <div className="noticeDetail">
       <h1>공지사항 상세보기</h1>
       <div className="noticeForm">
-        <form>
+        <form onSubmit={handleNoticeUpdateSubmit} method="PUT">
           <div className="inputContainer">
             <label htmlFor="noticeTitle">제목</label>
             <input
@@ -55,7 +94,9 @@ const NoticeDetail = () => {
               name="noticeTitle"
               id="noticeTitle"
               value={noticeTitle}
-              readOnly
+              placeholder="제목을 입력하세요"
+              onChange={e => setNoticeTitle(e.target.value)}
+              ref={noticeTitleRef}
             />
           </div>
           <div className="textareaContainer">
@@ -64,13 +105,13 @@ const NoticeDetail = () => {
               name="noticeContent"
               id="noticeContent"
               value={noticeContent}
-              readOnly
+              placeholder="내용을 입력하세요"
+              onChange={e => setNoticeContent(e.target.value)}
+              ref={noticeContentRef}
             />
           </div>
           <div className="moveUpdateNoticePageBtn">
-            <button onClick={() => moveUpdateNoticePage(noticeId)}>
-              공지사항 수정
-            </button>
+            <button type="submit">공지사항 수정</button>
           </div>
         </form>
       </div>
