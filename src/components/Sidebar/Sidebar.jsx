@@ -44,7 +44,7 @@ function SideBar({ openSidebar, openSidebarMenu }) {
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="">
+          <Link to="/notices">
             <TfiWrite className="icon" /> Notices
           </Link>
         </li>

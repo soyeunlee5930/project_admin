@@ -1,0 +1,70 @@
+.updateNotice {
+  padding: 20px 20px;
+  font-size: 22px;
+
+  .noticeForm {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.7em;
+    font-weight: bold;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .inputContainer,
+      .textareaContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        label {
+          flex: 30%;
+          margin-bottom: 10px;
+        }
+
+        input,
+        textarea {
+          flex: 70%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+
+        textarea {
+          height: 400px;
+          resize: none;
+        }
+      }
+
+      .submitBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+
+        button {
+          width: 200px;
+          height: 70px;
+          padding: 10px 20px;
+          border: 0;
+          border-radius: 10px;
+          outline: 0;
+          text-decoration: none;
+          font-size: large;
+          font-weight: bold;
+          transition: background-color 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: blue;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

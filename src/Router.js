@@ -14,6 +14,10 @@ import AddCategory from './pages/Categories/AddCategory/AddCategory';
 import AddSubCategory from './pages/Categories/AddSubCategory/AddSubCategory';
 import UpdateCategory from './pages/Categories/UpdateCategory/UpdateCategory';
 import UpdateSubCategory from './pages/Categories/UpdateSubCategory/UpdateSubCategory';
+import Notices from './pages/Notices/Notices.jsx';
+import AddNotice from './pages/Notices/AddNotice/AddNotice.jsx';
+import NoticeDetail from './pages/Notices/NoticeDetail/NoticeDetail.jsx';
+import UpdateNotice from './pages/Notices/UpdateNotice/UpdateNotice.jsx';
 
 const Router = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -40,6 +44,10 @@ const Router = () => {
           <Route path="/subcategories/add" element={<AddSubCategory />} />
           <Route path="/categories/:id" element={<UpdateCategory />} />
           <Route path="/subcategories/:id" element={<UpdateSubCategory />} />
+          <Route path="/notices" element={<Notices />} />
+          <Route path="/notices/add" element={<AddNotice />} />
+          <Route path="/notices/:id" element={<NoticeDetail />} />
+          <Route path="/notices/:id/edit" element={<UpdateNotice />} />
         </Routes>
       </div>
     </BrowserRouter>

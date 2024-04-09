@@ -77,7 +77,7 @@ const UpdateProduct = () => {
   };
 
   const getProductData = () => {
-    fetch(`http://localhost:3000/admins/products/${productId}`, {
+    fetch(`http://localhost:8080/admins/products/${productId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
