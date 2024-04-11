@@ -81,11 +81,6 @@
           color: white;
         }
       }
-      td span {
-        display: inline;
-        text-align: center;
-        font-size: 20px;
-      }
     }
 
     thead {
@@ -101,6 +96,10 @@
       vertical-align: middle;
       padding: 1em 0.5em;
       border-bottom: 1px solid gray;
+    }
+
+    .moveNoticeDetailBtn {
+      cursor: pointer;
     }
   }
 }

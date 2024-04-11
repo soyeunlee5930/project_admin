@@ -68,7 +68,6 @@ const NoticeDetail = () => {
       }),
     })
       .then(res => {
-        console.log(res);
         if (!res.ok) {
           alert('공지사항 수정 실패');
           return;

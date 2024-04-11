@@ -84,14 +84,15 @@ const Notices = () => {
               <tr key={index} className="noticesInfo">
                 <td>{index + 1}</td>
                 <td>{notice.adminId}</td>
-                <td>{notice.title}</td>
+                <td
+                  className="moveNoticeDetailBtn"
+                  onClick={() => redirectToNoticeDetail(notice.id)}
+                >
+                  {notice.title}
+                </td>
                 <td>{formatDate(notice.createdAt)}</td>
                 <td>{formatDate(notice.updatedAt)}</td>
                 <td>
-                  <button onClick={() => redirectToNoticeDetail(notice.id)}>
-                    상세
-                  </button>
-                  <span> | </span>
                   <button>삭제</button>
                 </td>
               </tr>
