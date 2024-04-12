@@ -1,8 +1,5 @@
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
-import Sidebar from './components/Sidebar/Sidebar';
-import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import User from './pages/User/User';
 import Products from './pages/Products/Products';
@@ -17,22 +14,15 @@ import UpdateSubCategory from './pages/Categories/UpdateSubCategory/UpdateSubCat
 import Notices from './pages/Notices/Notices.jsx';
 import AddNotice from './pages/Notices/AddNotice/AddNotice.jsx';
 import NoticeDetail from './pages/Notices/NoticeDetail/NoticeDetail.jsx';
+import MainLayout from './components/MainLayout/MainLayout.jsx';
 
 const Router = () => {
-  const [openSidebar, setOpenSidebar] = useState(false);
-
-  const openSidebarMenu = () => {
-    setOpenSidebar(!openSidebar);
-  };
-
   return (
     <BrowserRouter>
-      <div className="gridContainer">
-        <Header openSidebarMenu={openSidebarMenu} />
-        <Sidebar openSidebar={openSidebar} openSidebarMenu={openSidebarMenu} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+      <Routes>
+        {/* Header, Sidebar를 보여주고 싶은 컴포넌트(로그인해야 접근 가능) */}
+        <Route element={<MainLayout />}>
+          <Route path="/home" element={<Home />} />
           <Route path="/user" element={<User />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/add" element={<AddProduct />} />
@@ -46,8 +36,11 @@ const Router = () => {
           <Route path="/notices" element={<Notices />} />
           <Route path="/notices/add" element={<AddNotice />} />
           <Route path="/notices/:id" element={<NoticeDetail />} />
-        </Routes>
-      </div>
+        </Route>
+        {/* Header, Sidebar를 안 보여주고 싶은 컴포넌트 */}
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </BrowserRouter>
   );
 };

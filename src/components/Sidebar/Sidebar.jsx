@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BsGrid1X2Fill, BsFillArchiveFill, BsPeopleFill } from 'react-icons/bs';
 import { BiSolidCategory } from 'react-icons/bi';
 import { FaShoppingBasket } from 'react-icons/fa';
@@ -9,6 +9,10 @@ import { RiAdminFill } from 'react-icons/ri';
 import './Sidebar.scss';
 
 function SideBar({ openSidebar, openSidebarMenu }) {
+  // 로그인화면에 사이드바 미적용
+  const locationNow = useLocation();
+  if (locationNow.pathname === '/login') return null;
+
   return (
     <aside id="sidebar" className={openSidebar ? 'sidebarResponsive' : ''}>
       <div className="sidebarTitle">
@@ -19,7 +23,7 @@ function SideBar({ openSidebar, openSidebarMenu }) {
       </div>
       <ul className="sidebarList">
         <li className="sidebarListItem">
-          <Link to="/">
+          <Link to="/home">
             <BsGrid1X2Fill className="icon" /> Dashboard
           </Link>
         </li>
@@ -39,7 +43,7 @@ function SideBar({ openSidebar, openSidebarMenu }) {
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="">
+          <Link to="/home">
             <FaShoppingBasket className="icon" /> Orders
           </Link>
         </li>
@@ -49,12 +53,12 @@ function SideBar({ openSidebar, openSidebarMenu }) {
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="">
+          <Link to="/home">
             <TbUserQuestion className="icon" /> QnA
           </Link>
         </li>
         <li className="sidebarListItem">
-          <Link to="">
+          <Link to="/home">
             <RiAdminFill className="icon" /> Admins
           </Link>
         </li>
