@@ -1,0 +1,224 @@
+.addProductOption {
+  padding: 20px 20px;
+  font-size: 22px;
+
+  .option,
+  .colorAndSize {
+    margin-top: 30px;
+    padding: 1%;
+    text-align: center;
+    border: 1px solid white;
+  }
+
+  .productOptionForm {
+    margin-top: 10px;
+    padding-bottom: 50px;
+
+    form {
+      .addOptionButton {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+          display: flex;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: auto;
+          padding: 10px 20px;
+          border: 0;
+          border-radius: 10px;
+          outline: 0;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+
+          &:hover {
+            background-color: blue;
+            color: white;
+          }
+        }
+      }
+
+      table {
+        table-layout: fixed;
+        padding: 15px 15px;
+        width: 100%;
+        border: 1px solid gray;
+        border-collapse: separate;
+        border-radius: 10px;
+        font-size: 0.7em;
+
+        input[type='checkbox'] {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+
+        input,
+        select {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 14px;
+        }
+      }
+
+      tbody {
+        tr:last-child td {
+          border-bottom: none;
+        }
+      }
+
+      thead {
+        font-weight: bold;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      th,
+      td {
+        vertical-align: middle;
+        padding: 1em 0.5em;
+        border-bottom: 1px solid gray;
+      }
+    }
+  }
+
+  .productColorAndSizeForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px;
+
+    form {
+      table {
+        table-layout: fixed;
+        padding: 15px 15px;
+        width: 100%;
+        border: 1px solid gray;
+        border-collapse: separate;
+        border-radius: 10px;
+        font-size: 0.7em;
+
+        input,
+        select {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 14px;
+        }
+      }
+
+      tbody {
+        tr:last-child td {
+          border-bottom: none;
+        }
+      }
+
+      thead {
+        font-weight: bold;
+      }
+
+      th,
+      td {
+        vertical-align: middle;
+        padding: 1em 0.5em;
+        border-bottom: 1px solid gray;
+        text-align: center;
+
+        .addColorButton,
+        .addSizeButton {
+          button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            padding: 8px;
+            width: 120px;
+            border: 0;
+            border-radius: 10px;
+            outline: 0;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+
+            &:hover {
+              background-color: blue;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .productColorAndSize {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 30px;
+    gap: 30px;
+
+    table {
+      table-layout: fixed;
+      padding: 15px 15px;
+      width: 100%;
+      border: 1px solid gray;
+      border-collapse: separate;
+      border-radius: 10px;
+      font-size: 0.7em;
+
+      input,
+      select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
+    }
+
+    thead {
+      font-weight: bold;
+    }
+
+    th,
+    td {
+      vertical-align: middle;
+      padding: 1em 0.5em;
+      border-bottom: 1px solid gray;
+      text-align: center;
+
+      .deleteColorButton,
+      .deleteSizeButton {
+        button {
+          width: 50px;
+          height: 25px;
+          border: 0;
+          border-radius: 10px;
+          outline: 0;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 600;
+          transition: background-color 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: blue;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

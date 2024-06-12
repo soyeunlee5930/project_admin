@@ -13,6 +13,10 @@ const Products = () => {
     navigate(`/products/${productId}`);
   };
 
+  const redirectToProductInventory = productId => {
+    navigate(`/products/inventory/${productId}`);
+  };
+
   const [productsList, setProductsList] = useState([]);
 
   const getProductsList = () => {
@@ -101,7 +105,13 @@ const Products = () => {
                 <td>{product.discountRate}</td>
                 <td>{product.price.toLocaleString()}</td>
                 <td>{product.discountPrice.toLocaleString()}</td>
-                <td>{product.quantity}</td>
+                <td>
+                  <button
+                    onClick={() => redirectToProductInventory(product.id)}
+                  >
+                    상세
+                  </button>
+                </td>
                 <td>
                   <img src={product.thumnailImageUrl} alt="상품 대표이미지" />
                 </td>

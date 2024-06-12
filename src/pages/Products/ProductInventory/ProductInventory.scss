@@ -1,0 +1,95 @@
+.productInventory {
+  padding: 20px 20px;
+  font-size: 22px;
+
+  .productName {
+    margin-top: 30px;
+    padding: 1%;
+    text-align: center;
+    border: 1px solid white;
+  }
+
+  .productStockForm {
+    margin-top: 10px;
+
+    form {
+      .buttonBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .addStockButton {
+          display: flex;
+          gap: 10px;
+        }
+
+        button {
+          display: flex;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: auto;
+          padding: 10px 20px;
+          border: 0;
+          border-radius: 10px;
+          outline: 0;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+
+          &:hover {
+            background-color: blue;
+            color: white;
+          }
+        }
+      }
+
+      table {
+        table-layout: fixed;
+        padding: 15px 15px;
+        width: 100%;
+        border: 1px solid gray;
+        border-collapse: separate;
+        border-radius: 10px;
+        font-size: 0.7em;
+
+        input[type='checkbox'] {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+      }
+
+      tbody {
+        tr:last-child td {
+          border-bottom: none;
+        }
+      }
+
+      thead {
+        font-weight: bold;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      th,
+      td {
+        vertical-align: middle;
+        padding: 1em 0.5em;
+        border-bottom: 1px solid gray;
+      }
+
+      th.checkbox,
+      td.checkbox {
+        width: 70px;
+      }
+
+      th:not(.checkbox),
+      td:not(.checkbox) {
+        width: calc((100% - 70px) / 5);
+      }
+    }
+  }
+}

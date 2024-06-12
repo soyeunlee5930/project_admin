@@ -15,6 +15,8 @@ import Notices from './pages/Notices/Notices.jsx';
 import AddNotice from './pages/Notices/AddNotice/AddNotice.jsx';
 import NoticeDetail from './pages/Notices/NoticeDetail/NoticeDetail.jsx';
 import MainLayout from './components/MainLayout/MainLayout.jsx';
+import ProductInventory from './pages/Products/ProductInventory/ProductInventory.jsx';
+import AddProductOption from './pages/Products/ProductInventory/AddProductOption/AddProductOption.jsx';
 
 const Router = () => {
   return (
@@ -27,6 +29,14 @@ const Router = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/products/add" element={<AddProduct />} />
           <Route path="/products/:id" element={<ProductDetail />} />
+          <Route
+            path="/products/inventory/:id"
+            element={<ProductInventory />}
+          />
+          <Route
+            path="/products/inventory/add/:id"
+            element={<AddProductOption />}
+          />
           <Route path="/products/:id/edit" element={<UpdateProduct />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/add" element={<AddCategory />} />
