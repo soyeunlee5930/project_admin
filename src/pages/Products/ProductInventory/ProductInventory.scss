@@ -9,87 +9,117 @@
     border: 1px solid white;
   }
 
-  .productStockForm {
+  .productStockDiv {
     margin-top: 10px;
 
-    form {
-      .buttonBox {
+    .buttonBox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .addStockButton {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .addStockButton {
-          display: flex;
-          gap: 10px;
-        }
-
-        button {
-          display: flex;
-          margin-top: 20px;
-          margin-bottom: 20px;
-          margin-left: auto;
-          padding: 10px 20px;
-          border: 0;
-          border-radius: 10px;
-          outline: 0;
-          text-decoration: none;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: pointer;
-
-          &:hover {
-            background-color: blue;
-            color: white;
-          }
-        }
+        gap: 10px;
       }
 
-      table {
-        table-layout: fixed;
-        padding: 15px 15px;
-        width: 100%;
-        border: 1px solid gray;
-        border-collapse: separate;
+      button {
+        display: flex;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        padding: 10px 20px;
+        border: 0;
         border-radius: 10px;
-        font-size: 0.7em;
+        outline: 0;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
 
-        input[type='checkbox'] {
-          width: 20px;
-          height: 20px;
-          cursor: pointer;
+        &:hover {
+          background-color: blue;
+          color: white;
         }
       }
+    }
 
-      tbody {
-        tr:last-child td {
-          border-bottom: none;
+    table {
+      table-layout: fixed;
+      padding: 15px 15px;
+      width: 100%;
+      border: 1px solid gray;
+      border-collapse: separate;
+      border-radius: 10px;
+      font-size: 0.7em;
+
+      input[type='checkbox'] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      input,
+      select {
+        padding: 8px;
+        width: 150px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr {
+        .noData {
+          text-align: center;
         }
       }
+    }
 
-      thead {
-        font-weight: bold;
-      }
+    thead {
+      font-weight: bold;
+    }
 
-      th {
-        text-align: left;
-      }
+    th {
+      text-align: left;
+    }
 
-      th,
-      td {
-        vertical-align: middle;
-        padding: 1em 0.5em;
-        border-bottom: 1px solid gray;
-      }
+    th,
+    td {
+      vertical-align: middle;
+      padding: 1em 0.5em;
+      border-bottom: 1px solid gray;
 
-      th.checkbox,
-      td.checkbox {
-        width: 70px;
-      }
+      button {
+        padding: 8px;
+        width: 50px;
+        border: 0;
+        border-radius: 10px;
+        outline: 0;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
 
-      th:not(.checkbox),
-      td:not(.checkbox) {
-        width: calc((100% - 70px) / 5);
+        &:hover {
+          background-color: blue;
+          color: white;
+        }
       }
+    }
+
+    th.checkbox,
+    td.checkbox {
+      width: 70px;
+    }
+
+    th:not(.checkbox),
+    td:not(.checkbox) {
+      width: calc((100% - 70px) / 5);
     }
   }
 }

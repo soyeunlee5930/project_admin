@@ -89,7 +89,7 @@ const Products = () => {
               <th>할인율</th>
               <th>가격</th>
               <th>할인가격</th>
-              <th>수량</th>
+              <th>옵션</th>
               <th>대표이미지</th>
               <th>등록일</th>
               <th>수정일</th>

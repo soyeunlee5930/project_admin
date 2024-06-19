@@ -17,6 +17,7 @@ import NoticeDetail from './pages/Notices/NoticeDetail/NoticeDetail.jsx';
 import MainLayout from './components/MainLayout/MainLayout.jsx';
 import ProductInventory from './pages/Products/ProductInventory/ProductInventory.jsx';
 import AddProductOption from './pages/Products/ProductInventory/AddProductOption/AddProductOption.jsx';
+import EditProductOption from './pages/Products/ProductInventory/EditProductOption/EditProductOption.jsx';
 
 const Router = () => {
   return (
@@ -32,6 +33,10 @@ const Router = () => {
           <Route
             path="/products/inventory/:id"
             element={<ProductInventory />}
+          />
+          <Route
+            path="/products/inventory/:productOptionsId/edit"
+            element={<EditProductOption />}
           />
           <Route
             path="/products/inventory/add/:id"
