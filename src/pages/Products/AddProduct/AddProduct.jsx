@@ -8,7 +8,6 @@ const AddProduct = () => {
   const [discountRate, setDiscountRate] = useState(''); // 할인율
   const [price, setPrice] = useState('');
   const [discountPrice, setDiscountPrice] = useState(''); // 할인금액
-  const [quantity, setQuantity] = useState('');
   const [accumulatedAmount, setAccumulatedAmount] = useState(''); // 적립금
   const [productCode, setProductCode] = useState('');
   const [deliveryCountry, setDeliveryCountry] = useState('');
@@ -22,7 +21,6 @@ const AddProduct = () => {
   const productNameRef = useRef(null);
   const discountRateRef = useRef(null);
   const priceRef = useRef(null);
-  const quantityRef = useRef(null);
   const productCodeRef = useRef(null);
 
   useEffect(() => {
@@ -97,12 +95,6 @@ const AddProduct = () => {
       return;
     }
 
-    if (!quantity.trim()) {
-      alert('상품의 수량을 입력해주세요');
-      quantityRef.current.focus();
-      return;
-    }
-
     if (!productCode.trim()) {
       alert('상품코드를 입력해주세요');
       productCodeRef.current.focus();
@@ -115,7 +107,6 @@ const AddProduct = () => {
     formData.append('discountRate', discountRate);
     formData.append('price', price);
     formData.append('discountPrice', discountPrice);
-    formData.append('quantity', quantity);
     formData.append('accumulatedAmount', accumulatedAmount);
     formData.append('productCode', productCode);
     formData.append('deliveryCountry', deliveryCountry);
@@ -141,7 +132,6 @@ const AddProduct = () => {
         setDiscountRate('');
         setPrice('');
         setDiscountPrice('');
-        setQuantity('');
         setAccumulatedAmount('');
         setProductCode('');
         setDeliveryCountry('');
@@ -225,18 +215,6 @@ const AddProduct = () => {
               value={discountPrice}
               placeholder="할인율과 가격을 입력하면 자동으로 계산됩니다"
               readOnly
-            />
-          </div>
-          <div className="inputContainer">
-            <label htmlFor="quantity">수량</label>
-            <input
-              type="number"
-              name="quantity"
-              id="quantity"
-              value={quantity}
-              placeholder="수량을 입력하세요"
-              onChange={e => setQuantity(e.target.value)}
-              ref={quantityRef}
             />
           </div>
           <div className="inputContainer">

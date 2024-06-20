@@ -17,7 +17,6 @@ const ProductDetail = () => {
   const [discountRate, setDiscountRate] = useState(''); // 할인율
   const [price, setPrice] = useState('');
   const [discountPrice, setDiscountPrice] = useState(''); // 할인금액
-  const [quantity, setQuantity] = useState('');
   const [accumulatedAmount, setAccumulatedAmount] = useState(''); // 적립금
   const [productCode, setProductCode] = useState('');
   const [deliveryCountry, setDeliveryCountry] = useState('');
@@ -93,7 +92,6 @@ const ProductDetail = () => {
         setDiscountRate(data.discountRate);
         setPrice(data.price);
         setDiscountPrice(data.discountPrice);
-        setQuantity(data.quantity);
         setAccumulatedAmount(data.accumulatedAmount);
         setProductCode(data.productCode);
         setDeliveryCountry(data.deliveryCountry);
@@ -167,16 +165,6 @@ const ProductDetail = () => {
               name="discountPrice"
               id="discountPrice"
               value={discountPrice}
-              readOnly
-            />
-          </div>
-          <div className="inputContainer">
-            <label htmlFor="quantity">수량</label>
-            <input
-              type="number"
-              name="quantity"
-              id="quantity"
-              value={quantity}
               readOnly
             />
           </div>
