@@ -185,7 +185,7 @@ const ProductInventory = () => {
                       <Link
                         to={`/products/inventory/${product.productOptionsId}/edit`}
                       >
-                        <button>상세</button>
+                        <button>수정</button>
                       </Link>
                       <span>|</span>
                       <button

@@ -95,13 +95,13 @@
       border-bottom: 1px solid gray;
 
       button {
-        padding: 8px;
+        padding: 4px;
         width: 50px;
         border: 0;
         border-radius: 10px;
         outline: 0;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 600;
         cursor: pointer;
 
@@ -109,6 +109,11 @@
           background-color: blue;
           color: white;
         }
+      }
+
+      span {
+        margin-right: 5px;
+        margin-left: 5px;
       }
     }
 
